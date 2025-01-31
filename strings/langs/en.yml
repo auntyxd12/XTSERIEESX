@@ -163,18 +163,18 @@ str_2 : "❍ ᴠᴀʟɪᴅ sᴛʀᴇᴀᴍ ᴠᴇʀɪғɪᴇᴅ.\n\nᴘʀᴏᴄ�
 str_3 : "❍ ғᴀɪʟᴇᴅ ᴛᴏ sᴛʀᴇᴀᴍ ʏᴏᴜᴛᴜʙᴇ ʟɪᴠᴇ sᴛʀᴇᴀᴍ, ɴᴏ ʟɪᴠᴇ ꜰᴏʀᴍᴀᴛ ꜰᴏᴜɴᴅ."
 
 ping_1 : "❍ {0} ɪs ᴘɪɴɢɪɴɢ..."
-ping_2 : "🏓 ᴩᴏɴɢ : <code>{0}ᴍs</code>\n\n<b><u>{1} sʏsᴛᴇᴍ sᴛᴀᴛs :</u></b>\n\n<b>❍ ᴜᴩᴛɪᴍᴇ :</b> {2}\n<b>❍ ʀᴀᴍ :</b> {3}\n<b>❍ ᴄᴩᴜ :</b> {4}\n<b>❍ ᴅɪsᴋ :</b> {5}\n<b>❍ ᴩʏ-ᴛɢᴄᴀʟʟs :</b> <code>{6}ᴍs</code>\n\n<b> ❍ 𝖡ʏ » <a href=t.me/purvi_support>ᴘᴜʀᴠɪ-ᴍᴜ𝛅𝛊ᴄ™</a></b>"
+ping_2 : "🏓 ᴩᴏɴɢ : <code>{0}ᴍs</code>\n\n<b><u>{1} sʏsᴛᴇᴍ sᴛᴀᴛs :</u></b>\n\n<b>❍ ᴜᴩᴛɪᴍᴇ :</b> {2}\n<b>❍ ʀᴀᴍ :</b> {3}\n<b>❍ ᴄᴩᴜ :</b> {4}\n<b>❍ ᴅɪsᴋ :</b> {5}\n<b>❍ ᴩʏ-ᴛɢᴄᴀʟʟs :</b> <code>{6}ᴍs</code>\n\n<b> ❍ 𝖡ʏ » <a href=t.me/ll_Bot_Promotion_ll>𝗦𝐤⃪ꭷ‌⃪ꭷ‌⃪𝛈 𝗠⃪𝛖⃪𝜹⃪𝖎⃪ᴄ™</a></b>"
 
 queue_1 : "❍ ғᴇᴛᴄʜɪɴɢ ǫᴜᴇᴜᴇ...\n\nᴘʟᴇᴀsᴇ ᴡᴀɪᴛ..."
 queue_2 : "❍ ǫᴜᴇᴜᴇ ᴇᴍᴘᴛʏ."
 queue_3 : "<u>❍ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴄʜᴇᴄᴋ ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜᴇ ǫᴜᴇᴜᴇᴅ ᴛʀᴀᴄᴋs :</u> <a href={0}>ʜᴇʀᴇ</a>"
-queue_4 : "<blockquote><b>❖ Aᴅᴅᴇᴅ Tᴏ Qᴜᴇᴜᴇ Aᴛ #{0}</b></blockquote>\n<blockquote><b>❍ Tɪᴛʟᴇ :</b> {1}\n<b>❍ Dᴜʀᴀᴛɪᴏɴ :</b> {2} ᴍɪɴᴜᴛᴇs\n<b>❍ ʙʏ :</b> {3}\n<b>❍ ᴊᴏɪɴ  ➛  @PURVI_SUPPORT</b></blockquote>"
+queue_4 : "<blockquote><b>❖ Aᴅᴅᴇᴅ Tᴏ Qᴜᴇᴜᴇ Aᴛ #{0}</b></blockquote>\n<blockquote><b>❍ Tɪᴛʟᴇ :</b> {1}\n<b>❍ Dᴜʀᴀᴛɪᴏɴ :</b> {2} ᴍɪɴᴜᴛᴇs\n<b>❍ ʙʏ :</b> {3}\n<b>❍ ᴊᴏɪɴ  ➛  @ll_Bot_Promotion_ll</b></blockquote>"
 queue_5 : "❍ᴛʜᴇʀᴇ's ᴏɴʟʏ ᴏɴᴇ ǫᴜᴇᴜᴇᴅ ᴛʀᴀᴄᴋ ɪɴ ᴘʟᴀʏʟɪsᴛ.\n\nᴀᴅᴅ ᴍᴏʀᴇ ᴛʀᴀᴄᴋs ᴛᴏ ᴄʜᴇᴄᴋ ʟɪsᴛ."
 queue_6 : "<b>🕚 ᴅᴜʀᴀᴛɪᴏɴ :</b> ᴜɴᴋɴᴏᴡɴ ᴅᴜʀᴀᴛɪᴏɴ sᴛʀᴇᴀᴍ\n\nᴄʟɪᴄᴋ ᴏɴ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴡʜᴏʟᴇ ǫᴜᴇᴜᴇᴅ ʟɪsᴛ."
 queue_7 : "\n❍ ᴄʟɪᴄᴋ ᴏɴ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴡʜᴏʟᴇ ǫᴜᴇᴜᴇᴅ ʟɪsᴛ."
 queue_8 : "<b>{0} ᴘʟᴀʏᴇʀ</b>\n\n🎄 <b>sᴛʀᴇᴀᴍɪɴɢ :</b> {1}\n\n🔗 <b>sᴛʀᴇᴀᴍ ᴛʏᴘᴇ :</b> {2}\n🥀 <b>ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ :</b> {3}\n{4}"
 
-stream_1 : "<b><blockquote>❖  Sᴛᴀʀᴛᴇᴅ  Sᴛʀᴇᴀᴍɪɴɢ |</blockquote></b>\n<blockquote><b>❍ тɪᴛʟє :</b> <a href={0}>{1}</a>\n<b>❍ ᴅᴜʀᴧᴛɪση :</b> {2} ϻɪηᴜᴛєs\n<b>❍ ʙʏ :</b> {3}</blockquote>\n<b><blockquote>❖  ϻᴧᴅє  ʙʏ  ➛  [˹ᴘᴜʀᴠɪ-ʙᴏᴛs˼](https://t.me/ll_ALPHA_BABY_lll)</b></blockquote>"
+stream_1 : "<b><blockquote>❖  Sᴛᴀʀᴛᴇᴅ  Sᴛʀᴇᴀᴍɪɴɢ |</blockquote></b>\n<blockquote><b>❍ тɪᴛʟє :</b> <a href={0}>{1}</a>\n<b>❍ ᴅᴜʀᴧᴛɪση :</b> {2} ϻɪηᴜᴛєs\n<b>❍ ʙʏ :</b> {3}</blockquote>\n<b><blockquote>❖  ϻᴧᴅє  ʙʏ  ➛  [𝗦𝐤⃪ꭷ‌⃪ꭷ‌⃪𝛈 𝗠⃪𝛖⃪𝜹⃪𝖎⃪ᴄ™](https://t.me/ll_Bot_Promotion_ll)</b></blockquote>"
 stream_2 : "<b>❖  Sᴛᴀʀᴛᴇᴅ  Sᴛʀᴇᴀᴍɪɴɢ |</b>\n\n<b>❍ Sᴛʀᴇᴀᴍ ᴛʏᴘᴇ :</b> ʟɪᴠᴇ sᴛʀᴇᴀᴍ [ᴜʀʟ]\n<b>❍ Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ :</b> {0}"
 
 
