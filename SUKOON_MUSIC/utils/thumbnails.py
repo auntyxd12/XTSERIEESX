@@ -73,8 +73,8 @@ async def get_thumb(videoid):
         draw = ImageDraw.Draw(background)
         arial = ImageFont.truetype("SUKOON_MUSIC/assets/font2.ttf", 30)
         font = ImageFont.truetype("SUKOON_MUSIC/assets/font.ttf", 30)
-        text_size = draw.textsize("TEAM PURVI BOTS    ", font=font)
-        draw.text((1280 - text_size[0] - 10, 10), "TEAM PURVI BOTS    ", fill="white", font=font)
+        text_size = draw.textsize("SUKOON MUSIC BOTS    ", font=font)
+        draw.text((1280 - text_size[0] - 10, 10), "SUKOON MUSIC BOTS    ", fill="white", font=font)
         draw.text(
             (55, 560),
             f"{channel} | {views[:23]}",
