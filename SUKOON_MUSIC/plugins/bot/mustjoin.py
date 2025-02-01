@@ -5,7 +5,7 @@ from SUKOON_MUSIC import app
 
 #--------------------------
 
-MUST_JOIN = "PURVI_SUPPORT"
+MUST_JOIN = "SUKOON_MUSIC"
 #------------------------
 @app.on_message(filters.incoming & filters.private, group=-1)
 async def must_join_channel(app: Client, msg: Message):
@@ -27,7 +27,7 @@ async def must_join_channel(app: Client, msg: Message):
                         [
                             [
                                 InlineKeyboardButton("• ᴊᴏɪɴ •", url=link),
-                                InlineKeyboardButton("• ᴊᴏɪɴ •", url="https://t.me/ONE_WAS_SIGMA"),
+                                InlineKeyboardButton("• ᴊᴏɪɴ •", url="https://t.me/lll_Oye_Zayn_lll"),
                             ]
                         ]
                     )
