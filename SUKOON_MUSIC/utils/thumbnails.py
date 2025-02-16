@@ -1,11 +1,9 @@
 import os
 import re
 import logging
-import asyncio
-from datetime import datetime, timedelta
 import aiofiles
 import aiohttp
-from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from unidecode import unidecode
 from youtubesearchpython.__future__ import VideosSearch
 
@@ -20,20 +18,20 @@ logger = logging.getLogger(__name__)
 CACHE_DIR = "cache"
 FONT_PATH = "SUKOON_MUSIC/assets/font.ttf"
 FONT2_PATH = "SUKOON_MUSIC/assets/font2.ttf"
-CACHE_EXPIRY_DAYS = 7  # Cache expiry in days
 
-# Ensure cache directory exists
-if not os.path.exists(CACHE_DIR):
-    os.makedirs(CACHE_DIR)
+def ensure_cache_dir():
+    """Ensure the cache directory exists."""
+    if not os.path.exists(CACHE_DIR):
+        os.makedirs(CACHE_DIR)
 
-# Custom Exceptions
-class ThumbnailError(Exception):
-    pass
+def change_image_size(max_width, max_height, image):
+    """Resize the image while maintaining aspect ratio."""
+    width_ratio = max_width / image.size[0]
+    height_ratio = max_height / image.size[1]
+    new_width = int(width_ratio * image.size[0])
+    new_height = int(height_ratio * image.size[1])
+    return image.resize((new_width, new_height))
 
-class VideoInfoError(Exception):
-    pass
-
-# Utility Functions
 def clear(text):
     """Truncate text to fit within a certain length."""
     words = text.split(" ")
@@ -43,23 +41,16 @@ def clear(text):
             title += " " + word
     return title.strip()
 
-def is_cache_valid(file_path):
-    """Check if the cached file is still valid."""
-    if not os.path.exists(file_path):
-        return False
-    file_time = datetime.fromtimestamp(os.path.getmtime(file_path))
-    return datetime.now() - file_time < timedelta(days=CACHE_EXPIRY_DAYS)
-
 async def download_thumbnail(videoid, thumbnail_url):
-    """Download the thumbnail image asynchronously."""
-    file_path = f"{CACHE_DIR}/thumb{videoid}.png"
+    """Download the thumbnail image."""
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail_url) as resp:
             if resp.status == 200:
+                file_path = f"{CACHE_DIR}/thumb{videoid}.png"
                 async with aiofiles.open(file_path, mode="wb") as f:
                     await f.write(await resp.read())
                 return file_path
-    raise ThumbnailError("Failed to download thumbnail")
+    return None
 
 async def get_video_info(videoid):
     """Fetch video information from YouTube."""
@@ -76,41 +67,24 @@ async def get_video_info(videoid):
             return title, duration, thumbnail, views, channel
     except Exception as e:
         logger.error(f"Error fetching video info: {e}")
-        raise VideoInfoError("Failed to fetch video info")
+    return None, None, None, None, None
 
 async def create_thumbnail(videoid, title, duration, views, channel):
-    """Create a custom thumbnail image with advanced features."""
+    """Create a custom thumbnail image."""
     try:
-        # Open downloaded thumbnail
         youtube = Image.open(f"{CACHE_DIR}/thumb{videoid}.png")
-        image = change_image_size(1280, 720, youtube)
-
-        # Apply advanced image processing
-        image = image.convert("RGBA")
-        background = image.filter(filter=ImageFilter.GaussianBlur(10))
+        image1 = change_image_size(1280, 720, youtube)
+        image2 = image1.convert("RGBA")
+        background = image2.filter(filter=ImageFilter.BoxBlur(10))
         enhancer = ImageEnhance.Brightness(background)
         background = enhancer.enhance(0.5)
-
-        # Add gradient overlay
-        gradient = Image.new("RGBA", image.size, color=(0, 0, 0, 0))
-        draw_gradient = ImageDraw.Draw(gradient)
-        for i in range(0, 720):
-            alpha = int(255 * (i / 720))
-            draw_gradient.line([(0, i), (1280, i)], fill=(0, 0, 0, alpha))
-        background = Image.alpha_composite(background, gradient)
-
-        # Draw text and shapes
         draw = ImageDraw.Draw(background)
         arial = ImageFont.truetype(FONT2_PATH, 30)
         font = ImageFont.truetype(FONT_PATH, 30)
 
-        # Dynamic font sizing for title
-        title_font_size = 30
-        while draw.textsize(title, font=font)[0] > 1200:
-            title_font_size -= 1
-            font = ImageFont.truetype(FONT_PATH, title_font_size)
-
-        # Draw text
+        # Draw text and shapes
+        text_size = draw.textsize("SUKOON MUSIC BOTS    ", font=font)
+        draw.text((1280 - text_size[0] - 10, 10), "SUKOON MUSIC BOTS    ", fill="white", font=font)
         draw.text((55, 560), f"{channel} | {views[:23]}", (255, 255, 255), font=arial)
         draw.text((57, 600), clear(title), (255, 255, 255), font=font)
         draw.line([(55, 660), (1220, 660)], fill="white", width=5, joint="curve")
@@ -124,29 +98,30 @@ async def create_thumbnail(videoid, title, duration, views, channel):
         return final_path
     except Exception as e:
         logger.error(f"Error creating thumbnail: {e}")
-        raise ThumbnailError("Failed to create thumbnail")
+        return None
 
 async def get_thumb(videoid):
     """Get the thumbnail for a given video ID."""
+    ensure_cache_dir()
     cached_path = f"{CACHE_DIR}/{videoid}.png"
-    if os.path.isfile(cached_path) and is_cache_valid(cached_path):
+    if os.path.isfile(cached_path):
         return cached_path
 
-    try:
-        # Fetch video info and download thumbnail concurrently
-        title, duration, thumbnail_url, views, channel = await get_video_info(videoid)
-        thumb_path = await download_thumbnail(videoid, thumbnail_url)
-
-        # Create and save the final thumbnail
-        final_path = await create_thumbnail(videoid, title, duration, views, channel)
-
-        # Clean up temporary files
-        try:
-            os.remove(thumb_path)
-        except Exception as e:
-            logger.error(f"Error removing temporary thumbnail: {e}")
-
-        return final_path
-    except (VideoInfoError, ThumbnailError) as e:
-        logger.error(f"Error generating thumbnail: {e}")
+    title, duration, thumbnail_url, views, channel = await get_video_info(videoid)
+    if not thumbnail_url:
         return YOUTUBE_IMG_URL
+
+    thumb_path = await download_thumbnail(videoid, thumbnail_url)
+    if not thumb_path:
+        return YOUTUBE_IMG_URL
+
+    final_path = await create_thumbnail(videoid, title, duration, views, channel)
+    if not final_path:
+        return YOUTUBE_IMG_URL
+
+    try:
+        os.remove(thumb_path)
+    except Exception as e:
+        logger.error(f"Error removing temporary thumbnail: {e}")
+
+    return final_path
