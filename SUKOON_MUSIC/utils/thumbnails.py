@@ -84,7 +84,7 @@ async def create_thumbnail(videoid, title, duration, views, channel):
 
         # Draw text and shapes
         text_size = draw.textsize("T-SERIES MUSIC BOTS    ", font=font)
-        draw.text((1280 - text_size[0] - 10, 10), "SUKOON MUSIC BOTS    ", fill="white", font=font)
+        draw.text((1280 - text_size[0] - 10, 10), "T-SEREIES MUSIC BOTS    ", fill="Black", font=font)
         draw.text((55, 560), f"{channel} | {views[:23]}", (255, 255, 255), font=arial)
         draw.text((57, 600), clear(title), (255, 255, 255), font=font)
         draw.line([(55, 660), (1220, 660)], fill="white", width=5, joint="curve")
