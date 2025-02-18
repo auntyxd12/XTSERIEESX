@@ -83,7 +83,7 @@ async def create_thumbnail(videoid, title, duration, views, channel):
         font = ImageFont.truetype(FONT_PATH, 30)
 
         # Draw text and shapes
-        text_size = draw.textsize("SUKOON MUSIC BOTS    ", font=font)
+        text_size = draw.textsize("T-SERIES MUSIC BOTS    ", font=font)
         draw.text((1280 - text_size[0] - 10, 10), "SUKOON MUSIC BOTS    ", fill="white", font=font)
         draw.text((55, 560), f"{channel} | {views[:23]}", (255, 255, 255), font=arial)
         draw.text((57, 600), clear(title), (255, 255, 255), font=font)
